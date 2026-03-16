@@ -6,11 +6,11 @@ contract ClickCounter {
 
     function click () public {
       count++
-    };
+    }
 
     function decrement () public {
       count--
-    };
+    }
 
     function reset () public {
       count = 0;
