@@ -30,7 +30,7 @@ contract SimpleFitnessTracker {
 
     modifier onlyRegistered() {
         require(userProfiles[msg.sender].isRegistered, "User not registered");
-        -;
+        _;
     }   
 
     function registerUser(string memory _name, uint256 _weight) public {
@@ -62,7 +62,7 @@ contract SimpleFitnessTracker {
             activityType: _aactivityType,
             duration: _duration,
             distance: _distance,
-            timestamp: block.timeStamp, 
+            timestamp: block.timeStamp
         }) 
         //Add to user's workout history
          workoutHistory[msg.sender].push(newWorkout);
