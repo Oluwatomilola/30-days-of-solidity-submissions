@@ -7,7 +7,7 @@ contract EventEntry {
     uint256 public eventDate;
     uint256 public maxAttendees;
     uint256 public attendeeCount;
-    bool public isEventactive;
+    bool public isEventActive;
 
     mapping(address => bool) public hasAttended;
 
@@ -40,12 +40,12 @@ contract EventEntry {
     }
 
     function getEthSignedMessageHash(bytes32 _messageHash) public pure returns (bytes32) {
-        return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", _messageHash));    ;
+        return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", _messageHash));
     }    
 
     function verifySignature(address _attendee, bytes memory _signature) public view returns (bool) {
         bytes32 messageHash = getMessageHash(_attendee);
-        bytes32 ethSignedMessageHash(messageHash);
+        bytes32 ethSignedMessageHash = getEthSignedMessageHash(messageHash);
         return recoverSigner(ethSignedMessageHash, _signature) == organizer;
     }
 
