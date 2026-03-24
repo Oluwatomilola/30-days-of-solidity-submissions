@@ -61,7 +61,7 @@ contract SimpleNFT is IERC721 {
     }
 
     function getApproved(uint256 tokenId) public view override returns (address) {
-        require(_owners[tokenId] != address(0), "Token doesn't exist";
+        require(_owners[tokenId] != address(0), "Token doesn't exist");
         return _tokenApprovals[tokenId];
     }
 
