@@ -1,14 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract SimpleLending {
-    mapping(address => uint256) public depositBalances;
-    mapping(address => uint256) public borrowBalances;
-    mapping(address => uint256) public collateralBalances;
 
+/**
+ * @title SimpleLending
+ * @dev A basic DeFi lending and borrowing platform
+ */
+contract SimpleLending {
+
+    mapping(address => uint256) public depositBalances;    // Token balances for each user
+    mapping(address => uint256) public borrowBalances;        // Borrowed amounts for each user
+    mapping(address => uint256) public collateralBalances;        // Collateral provided by each user
+
+     // Interest rate in basis points (1/100 of a percent)
+    // 500 basis points = 5% interest
     uint256 public interestRateBasisPoints = 500; 
+
+     // Collateral factor in basis points (e.g., 7500 = 75%)
+    // Determines how much you can borrow against your collateral
     uint256 public collateralFactorBasisPoints = 7500;
 
+        // Timestamp of last interest accrual
     mapping(address => uint) public lastInterestAccrualTimestamp;
 
     event Deposit(address indexed user, uint256 amount);
