@@ -13,7 +13,7 @@ interface IERC20Metadata is IERC20 {
     
 
 contract YieldFarming is ReentrancyGuard {
-    uising SafeCast for uint256;
+    using SafeCast for uint256;
 
     IERC20 public stakingToken;
     IERC20 public rewardToken;
